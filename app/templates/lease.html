@@ -1,0 +1,23 @@
+<%inherit file="menu.html"/>
+
+<%block name="body_block">
+    <h1>Lease Detail</h1>
+    <br/>
+    <h3>${l.lease} - ${l.client}</h3>
+    <br/>
+    <div class="lease">
+        ${l.id}
+        ${l.net_id}
+        ${l.lease}
+        ${l.starts}
+        ${l.ends}
+        ${l.cltt}
+        ${l.binding}
+        ${l.next}
+        ${l.rewind}
+        ${l.hardware}
+        ${l.uid}
+        ${l.client}
+    </div>
+    <a href="/delete/host/${l.id}">Delete Lease</a>
+</%block>

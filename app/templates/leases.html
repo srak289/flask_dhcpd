@@ -1,0 +1,12 @@
+<%inherit file="menu.html"/>
+
+<%block name="body_block">
+    <h1>Lease List</h1>
+    <br/>
+    <div>
+        % for l in leases:
+            <a href="/lease/${l.id}">${l.lease}</a>
+        % endfor
+    </div>
+    </div>
+</%block>

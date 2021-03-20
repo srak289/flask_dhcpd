@@ -1,0 +1,22 @@
+<% ports = Port.query.filter_by(host_id=hosts[0].id).all() %>
+HOST,\
+% for p in ports:
+PORT ${p.port_num}${ '\n' if loop.last else ',' }\
+% endfor
+\
+% for h in hosts:
+<% ports = Port.query.filter_by(host_id=h.id).all() %>\
+\
+<%
+    draw = False
+    for p in ports:
+        if p.port_stat != 'TIMEOUT':
+            draw = True
+%>\
+% if draw:
+${h.addr},\
+% for p in ports:
+${p.port_stat}${ '\n' if loop.last else ',' }\
+% endfor
+% endif
+% endfor

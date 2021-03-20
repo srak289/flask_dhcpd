@@ -1,0 +1,33 @@
+<%inherit file="menu.html"/>
+
+<%block name="body_block">
+    <h1>Network Detail</h1>
+    <br/>
+    <h3>${n.name} - ${n.addr}</h3>
+    <br/>
+    <div>
+        <table>
+            <tr>
+                <th>Host</th>
+                <th>Open Ports</th>
+            </tr>
+        % for h in hosts:
+            <%
+                count = 0
+                for p in Port.query.filter_by(host_id=h.id).all():
+                    if p.port_stat == 'OPEN':
+                        count += 1
+            %>
+            % if count > 0:
+            <tr>
+                <td><a href="/host/${h.id}">${h.addr}</a></td>
+                <td>${count}</td>
+            </tr>
+            % endif
+        % endfor
+        </table>
+    </div>
+    <a href="/update/network/${n.id}">Scan Network</a><br>
+    <a href="/report/Network_${n.id}_report.csv">Download Report</a><br>
+    <a href="/delete/network/${n.id}">Delete Network</a>
+</%block>

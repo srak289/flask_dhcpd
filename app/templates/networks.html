@@ -1,0 +1,35 @@
+<%inherit file="menu.html"/>
+
+<%block name="body_block">
+    <h1>Network List</h1>
+    <br/>
+    <div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Live Hosts</th>
+            </tr>
+        % for n in networks:
+            <tr>
+                <td><a href="/network/${n.id}">${n.name}</a></td>
+                <td>${n.addr}</td>
+                <td></td>
+            </tr>
+        % endfor
+        </table>
+    </div>
+    <br/>
+    <!--
+    <div>
+        <h3>Add Network</h3>
+        <form action="/networks" method="post">
+            <label for="name">Network Name</label>
+            <input type="text" name="name" id="name"/>
+            <label for="addr">Network Address (x.x.x.x/xx)</label>
+            <input type="text" name="addr" id="addr"/>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    -->
+</%block>
